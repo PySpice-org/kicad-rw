@@ -7,12 +7,12 @@
  KiCad-RW : Python library to read/write KiCad Sexpr file format 
 =================================================================
 
+|Pypi License|
+|Pypi Python Version|
+
+|Pypi Version|
+
 ..
-   |Pypi License|
-   |Pypi Python Version|
-
-   |Pypi Version|
-
    |Anaconda Version|
    |Anaconda Downloads|
 

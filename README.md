@@ -1,5 +1,13 @@
 # KiCad-RW : Python library to read/write KiCad Sexpr file format
 
+[![KiCadRW
+license](https://img.shields.io/pypi/l/KiCadRW.svg)](https://pypi.python.org/pypi/KiCadRW)
+[![KiCadRW python
+version](https://img.shields.io/pypi/pyversions/KiCadRW.svg)](https://pypi.python.org/pypi/KiCadRW)
+
+[![KiCadRW last
+version](https://img.shields.io/pypi/v/KiCadRW.svg)](https://pypi.python.org/pypi/KiCadRW)
+
 **Quick Links**
 
   - [Devel Branch](https://github.com/FabriceSalvaire/kicad-rw/tree/devel)
@@ -29,7 +37,7 @@ don't require KiCad to work.
     <span class="title-ref">CircuitMacrosDumper</span>
   - etc.
 
-**KiCad-RW** use the Python library [sexpdata](https://github.com/jd-boyd/sexpdata) to parse the
+**KiCad-RW** uses the Python library [sexpdata](https://github.com/jd-boyd/sexpdata) to parse the
 file.
 
 **How to go further:**

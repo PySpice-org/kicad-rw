@@ -69,12 +69,12 @@
  KiCad-RW : Python library to read/write KiCad Sexpr file format 
 =================================================================
 
+|Pypi License|
+|Pypi Python Version|
+
+|Pypi Version|
+
 ..
-   |Pypi License|
-   |Pypi Python Version|
-
-   |Pypi Version|
-
    |Anaconda Version|
    |Anaconda Downloads|
 
@@ -113,7 +113,7 @@ standalone and independent of the KiCad Python API, thus it don't require KiCad 
   a tool for drawing electric high quality circuits, see `CircuitMacrosDumper`
 * etc.
 
-**KiCad-RW** use the Python library `sexpdata <https://github.com/jd-boyd/sexpdata>`_ to parse the file.
+**KiCad-RW** uses the Python library `sexpdata <https://github.com/jd-boyd/sexpdata>`_ to parse the file.
 
 **How to go further:**
 
