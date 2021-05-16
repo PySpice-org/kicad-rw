@@ -41,3 +41,6 @@
 .. |Tavis CI master| image:: https://travis-ci.com/FabriceSalvaire/KiCadRW.svg?branch=master
    :target: https://travis-ci.com/FabriceSalvaire/KiCadRW
    :alt: KiCadRW build status @travis-ci.org
+
+.. |KiCadRW Test Workflow| image:: https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/pyspice-test.yml/badge.svg?branch=devel
+   :target: https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/kicadrw-test.yml
