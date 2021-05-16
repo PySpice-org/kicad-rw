@@ -20,8 +20,8 @@
 
 ####################################################################################################
 
-__version__ = '1.0'
-GIT_TAG = 'v1.0'
+__version__ = '0.1'
+GIT_TAG = 'v0.1'
 
 def show_version():
-    print('KiCadTools Version {}'.format(__version__))
+    print('KiCad-RW Version {}'.format(__version__))
