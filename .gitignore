@@ -1,1 +1,61 @@
-*-backups/
+# -*- mode: Conf -*-
+
+####################################################################################################
+
+*.stderr
+*.stdout
+*/tex/auto
+*~
+__pycache__
+du.log
+parser.out
+parsetab.py
+
+####################################################################################################
+#
+# Secrets
+#
+
+doc/pelican/SECRET_CONFIG.py
+tasks/anaconda-login.txt
+tasks/SECRET_CONFIG.py
+
+####################################################################################################
+
+MANIFEST
+
+####################################################################################################
+
+.cache/
+.pytest_cache/
+.tox/
+KiCadRW.egg-info/
+build/
+dist/
+
+# doc/logo/logo-v1.jpg
+# doc/logo/logo-v1.png
+# doc/logo/logo-v2.jpg
+# doc/logo/logo-v2.png
+# doc/logo/logo.png
+
+doc/pelican/output
+doc/pelican/pelican-plugins
+doc/pelican/pelican-themes
+doc/pelican/theme/.yarnclean
+doc/pelican/theme/node_modules
+doc/pelican/theme/static/css/base.css
+doc/pelican/theme/static/css/libs/bootstrap/bootstrap-grid.css
+doc/pelican/theme/static/css/libs/bootstrap/bootstrap-reboot.css
+doc/pelican/theme/static/css/libs/bootstrap/bootstrap.css
+doc/pelican/theme/static/css/libs/fontawesome/brands.css
+doc/pelican/theme/static/css/libs/fontawesome/fontawesome.css
+doc/pelican/theme/static/css/libs/fontawesome/regular.css
+doc/pelican/theme/static/css/libs/fontawesome/solid.css
+doc/pelican/theme/static/css/libs/fontawesome/v4-shims.css
+doc/pelican/theme/yarn-error.log
+doc/pelican/theme/yarn.lock
+
+doc/sphinx/build/
+doc/sphinx/source/api/
+doc/sphinx/source/examples/
