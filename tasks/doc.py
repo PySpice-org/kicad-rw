@@ -121,6 +121,7 @@ def make_readme(ctx):
     # import subprocess
     # subprocess.call(('rst2html', 'README.rst', 'README.html'))
     ctx.run('rst2html5.py README.rst README.html')
+    ctx.run('pandoc -t gfm --columns=100 -o README.md README.rst')
 
 ####################################################################################################
 
