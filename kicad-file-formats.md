@@ -20,6 +20,8 @@ In comparison to XML:
 * KiCad uses localised property names, e.g. for sheet filename.  The key will be in French if you
   saved the file with the UI language set to French.
 
+* How are gnerated uuid ? *Symbols have uuid with a lot of (left) zeros, but not pins.*
+
 The data types ares:
 
 * tuple
