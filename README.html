@@ -620,17 +620,14 @@ a { text-decoration: none; }
 * `conda-forge/kicad-rw <https://anaconda.org/conda-forge/kicad-rw>`_ -->
 <div class="section" id="overview">
 <h1>Overview</h1>
-<div class="section" id="what-is-kicadrw">
-<h2>What is KiCaDRW ?</h2>
-<p><strong>keywords:</strong> kicad, 6, python, schema</p>
-<p><strong>KiCadTools</strong> is a Python module to read the KiCad version 6 schema
-file format (<cite>.kicad_sch</cite> file extension) and to compute the netlist
-which is not actually stored by KiCad.  This module is standalone and
-independent of the KiCad Python API, thus it don't require KiCad to
-work.</p>
-<p><strong>Note</strong>: This proof of concept could become a standalone project and
-be further extended.</p>
-<p>Examples of use cases:</p>
+<div class="section" id="what-is-kicad-rw">
+<h2>What is KiCaD-RW ?</h2>
+<p><strong>A WORK IN PROGRESS...</strong></p>
+<p><strong>keywords:</strong> kicad, 6, sexpr, python, schema</p>
+<p><strong>KiCad-RW</strong> is a Python module to read the KiCad version 6 schema file format (<cite>.kicad_sch</cite> file
+extension) and to compute the netlist which is not actually stored by KiCad.  This module is
+standalone and independent of the KiCad Python API, thus it don't require KiCad to work.</p>
+<p><strong>Examples of use cases:</strong></p>
 <ul class="simple">
 <li><p>perform checks on circuit</p></li>
 <li><p>export a BOM</p></li>
@@ -640,30 +637,40 @@ be further extended.</p>
 a tool for drawing electric high quality circuits, see <cite>CircuitMacrosDumper</cite></p></li>
 <li><p>etc.</p></li>
 </ul>
+<p><strong>KiCad-RW</strong> use the Python library <a class="reference external" href="https://github.com/jd-boyd/sexpdata">sexpdata</a> to parse the file.</p>
+<p><strong>How to go further:</strong></p>
+<ul class="simple">
+<li><p>KiCad uses Sexpr format, thus we don't have so many tools and a DTD like for XML</p></li>
+<li><p>We must use an external library to parse Sexpr format: sexpdata actually</p></li>
+<li><p>We must be able to parse the file without the need of KiCad, especially if we think KiCad is a reference EDA software</p></li>
+<li><p>We must not write tons of code to handle this format...</p></li>
+<li><p>We must try to auto-learn the KiCad format from a reference file collection and generate an OO API (fully automatic, jinja template)</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/FabriceSalvaire/kicad-rw/blob/main/LINKS.md">Comprehensive bibliography and relevant links on the topic</a></p>
 </div>
 <div class="section" id="where-is-the-documentation">
 <h2>Where is the Documentation ?</h2>
-<p><strong>TO BE COMPLETED</strong></p>
+<p><em>TO BE COMPLETED</em></p>
 <!-- The documentation is available on the |KiCaDRWHomePage|_. -->
 </div>
-<div class="section" id="where-to-get-help-or-talk-about-kicadrw">
-<h2>Where to get help or talk about KiCaDRW ?</h2>
-<p><strong>TO BE DONE</strong></p>
+<div class="section" id="where-to-get-help-or-talk-about-kicad-rw">
+<h2>Where to get help or talk about KiCaD-RW ?</h2>
+<p><em>TO BE COMPLETED</em>:</p>
 </div>
 <div class="section" id="what-are-the-main-features">
 <h2>What are the main features ?</h2>
 </div>
 <div class="section" id="how-to-install-it">
 <h2>How to install it ?</h2>
-<p><strong>TO BE COMPLETED</strong></p>
+<p><em>TO BE COMPLETED</em></p>
 <!-- Look at the `installation <https://kicad-rw.fabrice-salvaire.fr/releases/latest/installation.html>`_ section in the documentation. -->
 </div>
 </div>
 <div class="section" id="pull-request-recommendation">
 <h1>Pull Request Recommendation</h1>
 <p>To make it easier to merge your pull request, you should divide your PR into smaller and easier-to-verify units.</p>
-<p>Please do not make a pull requests with a lot of modifications which are difficult to check.
-.. If I merge pull requests blindly then there is a high risk this software will become a mess quickly for everybody.</p>
+<p>Please do not make a pull requests with a lot of modifications which are difficult to check.</p>
+<!-- If I merge pull requests blindly then there is a high risk this software will become a mess quickly for everybody. -->
 </div>
 <div class="section" id="credits">
 <h1>Credits</h1>

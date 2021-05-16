@@ -7,18 +7,18 @@
 
 ## Overview
 
-### What is KiCaDRW ?
+### What is KiCaD-RW ?
 
-**keywords:** kicad, 6, python, schema
+**A WORK IN PROGRESS...**
 
-**KiCadTools** is a Python module to read the KiCad version 6 schema file format
+**keywords:** kicad, 6, sexpr, python, schema
+
+**KiCad-RW** is a Python module to read the KiCad version 6 schema file format
 (<span class="title-ref">.kicad\_sch</span> file extension) and to compute the netlist which is not
 actually stored by KiCad. This module is standalone and independent of the KiCad Python API, thus it
 don't require KiCad to work.
 
-**Note**: This proof of concept could become a standalone project and be further extended.
-
-Examples of use cases:
+**Examples of use cases:**
 
   - perform checks on circuit
   - export a BOM
@@ -29,28 +29,42 @@ Examples of use cases:
     <span class="title-ref">CircuitMacrosDumper</span>
   - etc.
 
+**KiCad-RW** use the Python library [sexpdata](https://github.com/jd-boyd/sexpdata) to parse the
+file.
+
+**How to go further:**
+
+  - KiCad uses Sexpr format, thus we don't have so many tools and a DTD like for XML
+  - We must use an external library to parse Sexpr format: sexpdata actually
+  - We must be able to parse the file without the need of KiCad, especially if we think KiCad is a
+    reference EDA software
+  - We must not write tons of code to handle this format...
+  - We must try to auto-learn the KiCad format from a reference file collection and generate an OO
+    API (fully automatic, jinja template)
+
+[Comprehensive bibliography and relevant links on the
+topic](https://github.com/FabriceSalvaire/kicad-rw/blob/main/LINKS.md)
+
 ### Where is the Documentation ?
 
-**TO BE COMPLETED**
+*TO BE COMPLETED*
 
-### Where to get help or talk about KiCaDRW ?
+### Where to get help or talk about KiCaD-RW ?
 
-**TO BE DONE**
+*TO BE COMPLETED*:
 
 ### What are the main features ?
 
 ### How to install it ?
 
-**TO BE COMPLETED**
+*TO BE COMPLETED*
 
 ## Pull Request Recommendation
 
 To make it easier to merge your pull request, you should divide your PR into smaller and
 easier-to-verify units.
 
-Please do not make a pull requests with a lot of modifications which are difficult to check. .. If I
-merge pull requests blindly then there is a high risk this software will become a mess quickly for
-everybody.
+Please do not make a pull requests with a lot of modifications which are difficult to check.
 
 ## Credits
 
