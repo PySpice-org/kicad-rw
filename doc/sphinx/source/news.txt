@@ -1,0 +1,13 @@
+.. -*- Mode: rst -*-
+
+.. include:: abbreviation.txt
+.. include:: project-links.txt
+
+.. no title here
+
+V0 2020-xx-xx
+-------------
+
+Started project
+
+.. End

@@ -1,0 +1,43 @@
+.. -*- Mode: rst -*-
+
+.. |KiCadRWUrl| replace:: https://kicad-rw.fabrice-salvaire.fr
+
+.. |KiCadRWHomePage| replace:: KiCadRW Home Page
+.. _KiCadRWHomePage: https://kicad-rw.fabrice-salvaire.fr
+
+
+.. |KiCadRW@github| replace:: https://github.com/FabriceSalvaire/KiCadRW
+
+
+.. |KiCadRW@pypi| replace:: https://pypi.python.org/pypi/KiCadRW
+
+
+.. |KiCadRW@anaconda| replace:: https://anaconda.org/conda-forge/kicad-rw
+
+.. |KiCadRW@fs-anaconda| replace:: https://anaconda.org/fabricesalvaire/kicad-rw
+
+.. |Anaconda Version| image:: https://anaconda.org/conda-forge/kicad-rw/badges/version.svg
+   :target: https://anaconda.org/conda-forge/kicad-rw/badges/version.svg
+   :alt: Anaconda last version
+
+.. |Anaconda Downloads| image:: https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg
+   :target: https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg
+   :alt: Anaconda donwloads
+
+
+.. |Pypi Version| image:: https://img.shields.io/pypi/v/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW last version
+
+.. |Pypi License| image:: https://img.shields.io/pypi/l/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW license
+
+.. |Pypi Python Version| image:: https://img.shields.io/pypi/pyversions/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW python version
+
+
+.. |Tavis CI master| image:: https://travis-ci.com/FabriceSalvaire/KiCadRW.svg?branch=master
+   :target: https://travis-ci.com/FabriceSalvaire/KiCadRW
+   :alt: KiCadRW build status @travis-ci.org

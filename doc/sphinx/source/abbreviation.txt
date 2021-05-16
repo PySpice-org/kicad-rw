@@ -1,0 +1,18 @@
+.. -*- Mode: rst -*-
+
+.. _IPython: http://ipython.org
+.. _Kicad: http://www.kicad-pcb.org
+.. _PyPI: https://pypi.python.org/pypi
+.. _Pyterate: https://github.com/FabriceSalvaire/Pyterate
+.. _Python: http://python.org
+.. _Sphinx: http://sphinx-doc.org
+.. _Tikz: http://www.texample.net/tikz
+
+.. |Circuit_macros| replace:: Circuit_macros
+.. |IPython| replace:: IPython
+.. |Kicad| replace:: Kicad
+.. |PyPI| replace:: PyPI
+.. |Pyterate| replace:: Pyterate
+.. |Python| replace:: Python
+.. |Sphinx| replace:: Sphinx
+.. |Tikz| replace:: Tikz
