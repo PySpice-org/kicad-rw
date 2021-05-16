@@ -61,6 +61,8 @@ standalone and independent of the KiCad Python API, thus it don't require KiCad 
 * We must not write tons of code to handle this format...
 * We must try to auto-learn the KiCad format from a reference file collection and generate an OO API (fully automatic, jinja template)
 
+`Look at this project <https://github.com/FabriceSalvaire/kicad-rw/projects/1>`_
+
 `Comprehensive bibliography and relevant links on the topic <https://github.com/FabriceSalvaire/kicad-rw/blob/main/LINKS.md>`_
 
 Where is the Documentation ?

@@ -42,6 +42,8 @@ file.
   - We must try to auto-learn the KiCad format from a reference file collection and generate an OO
     API (fully automatic, jinja template)
 
+[Look at this project](https://github.com/FabriceSalvaire/kicad-rw/projects/1)
+
 [Comprehensive bibliography and relevant links on the
 topic](https://github.com/FabriceSalvaire/kicad-rw/blob/main/LINKS.md)
 
