@@ -135,23 +135,35 @@ class Node(TreeMixin):
 
     def xpath(self, path):
 
+        DEBUG = False
+
         if path.startswith('/'):
             path = path[1:]
-        index = 0
+            index = 0
+        else:
+            # relative
+            index = -1
         parts = path.split('/')
         last_index = len(parts) -1
-        # print(parts, last_index)
+        if DEBUG:
+            print(parts, last_index)
 
         results = []
 
         def on_node(node):
             nonlocal index
-            # indent = '    '*index
-            # print(indent, '@', index+1, node.path_str)
+            if index == -1:
+                index = 0
+                return True
+            if DEBUG:
+                indent = '    '*index
+                print(indent, '@', index+1, node.path_str)
             if node.name == parts[index]:
-                # print(indent, '  match')
+                if DEBUG:
+                    print(indent, '  match')
                 if index == last_index:
-                    # print(indent, '  found')
+                    if DEBUG:
+                        print(indent, '  found')
                     results.append(node)
                     return False
                 index += 1
@@ -160,8 +172,9 @@ class Node(TreeMixin):
 
         def on_leave(node):
             nonlocal index
-            # indent = '    '*index
-            # print(indent, '<<<@', index+1, 'leave')
+            if DEBUG:
+                indent = '    '*index
+                print(indent, '<<<@', index+1, 'leave')
             index -= 1
 
         self.depth_first_search(on_node, on_leave=on_leave)

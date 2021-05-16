@@ -35,7 +35,5 @@ for node in root.xpath('/kicad_sch/symbol/lib_id'):
 print('---')
 for node in root.xpath('/kicad_sch/symbol'):
     print(f"{node.path_str}: {node.first_child}")
-    for _ in node:
-        print(f"    {_.name}")
-    # for _ in node.xpath('property'):
-    #     print(f"{_.path_str}: {_.first_child}")
+    for _ in node.xpath('property'):
+        print(f"    {_.path_str}: {_.childs[:2]}")
