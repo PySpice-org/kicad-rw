@@ -33,17 +33,6 @@ required_python_version = (3, 6)
 if sys.version_info < required_python_version:
     sys.stderr.write('ERROR: KiCadRW requires Python {}.{}\n'.format(*required_python_version))
     sys.exit(1)
-
-####################################################################################################
-
-# Fixme: could check for ngspice, Xyce, libngspice.so etc.
-
-# check a simulator is installed
-# try:
-#     rc = subprocess.check_call(('ngspice', '--version'), stdout=sys.stderr)
-# except FileNotFoundError:
-#     sys.stderr.write('\n\nWarning: You must install ngspice\n\n')
-
 ####################################################################################################
 
 from setup_data import setup_dict
