@@ -102,10 +102,10 @@ def update_git_sha(ctx):
         for line in lines:
             if line.startswith('__version__'):
                 line = "__version__ = '{}'\n".format(version)
-            if line.startswith('__git_tag__'):
-                line = "__git_tag__ = '{}'\n".format(tag)
-            if line.startswith('__git_sha__'):
-                line = "__git_sha__ = '{}'\n".format(sha)
+            if line.startswith('GIT_TAG'):
+                line = "GIT_TAG = '{}'\n".format(tag)
+            if line.startswith('GIT_SHA'):
+                line = "GIT_SHA = '{}'\n".format(sha)
             fh.write(line)
 
 ####################################################################################################
