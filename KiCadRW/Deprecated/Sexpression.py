@@ -27,15 +27,6 @@ __all__ = [
 
 ####################################################################################################
 
-# Ideas to make an OO API
-#
-# provide a list of keys to be mapped in a dict/list, e.g. property -> properties
-#
-# [Symbol() ...] -> to Sexpr object
-# A Sexpr object has childs
-
-####################################################################################################
-
 import sexpdata
 from sexpdata import car, cdr
 
@@ -113,10 +104,6 @@ class Sexpression:
     @classmethod
     def sattr(cls, d):
         return d['_'][0]
-
-    # Fixme:
-    #  XPath method
-    #  extended dict [key1/key2/...]
 
     ##############################################
 

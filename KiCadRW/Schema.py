@@ -62,7 +62,7 @@ import os
 # from pprint import pprint
 
 from .Geometry import EuclidianMatrice, Position, PositionAngle, Vector
-from .Sexpression import Sexpression, car, cdr, car_value
+from .Deprecated.Sexpression import Sexpression, car, cdr, car_value
 
 ####################################################################################################
 
