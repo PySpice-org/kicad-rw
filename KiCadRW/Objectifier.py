@@ -59,19 +59,38 @@ class TreeMixin:
 
     ##############################################
 
+    @property
+    def childs(self):
+        return list(self._childs)
+
+    @property
+    def first_child(self):
+        # if self._childs:
+        return self._childs[0]
+        # else:
+        #     return None
+
+    ##############################################
+
     def append_child(self, child):
         self._childs.append(child)
 
     ##############################################
 
-    def depth_first_search(self, on_node=None, on_leaf=None):
+    def depth_first_search(self, on_node=None, on_leaf=None, on_leave=None):
+        go = True
         if on_node:
-            on_node(self)
-        for child in self:
-            if isinstance(child, Node):
-                child.depth_first_search(on_node, on_leaf)
-            elif on_leaf:
-                on_leaf(child)
+            go = on_node(self)
+        if go:
+            # print('-->')
+            for child in self:
+                if isinstance(child, Node):
+                    child.depth_first_search(on_node, on_leaf, on_leave)
+                elif on_leaf:
+                    on_leaf(child)
+            # print('<--')
+            if on_leave:
+                on_leave(self)
 
 ####################################################################################################
 
@@ -103,6 +122,50 @@ class Node(TreeMixin):
         if _:
             return '/'.join(_)
         return '/'
+
+    ##############################################
+
+    def __str__(self):
+        return f"{self.path_str}: {self.childs}"
+
+    def __repr__(self):
+        return f"{self.path_str}: {self.childs}"
+
+    ##############################################
+
+    def xpath(self, path):
+
+        if path.startswith('/'):
+            path = path[1:]
+        index = 0
+        parts = path.split('/')
+        last_index = len(parts) -1
+        # print(parts, last_index)
+
+        results = []
+
+        def on_node(node):
+            nonlocal index
+            # indent = '    '*index
+            # print(indent, '@', index+1, node.path_str)
+            if node.name == parts[index]:
+                # print(indent, '  match')
+                if index == last_index:
+                    # print(indent, '  found')
+                    results.append(node)
+                    return False
+                index += 1
+                return True
+            return False
+
+        def on_leave(node):
+            nonlocal index
+            # indent = '    '*index
+            # print(indent, '<<<@', index+1, 'leave')
+            index -= 1
+
+        self.depth_first_search(on_node, on_leave=on_leave)
+        return results
 
 ####################################################################################################
 
@@ -157,10 +220,12 @@ class Objectifier:
             sexpr = sexpdata.load(fh)
 
         self._root = self._walk_sexpr(sexpr)
-        # self.dump()
-        # self.get_paths()
-        self.get_schema()
-        print(SchemaNode.NODES)
+
+    ##############################################
+
+    @property
+    def root(self):
+        return self._root
 
     ##############################################
 
@@ -169,6 +234,7 @@ class Objectifier:
             root = self._root
         def on_node(node):
             print(node.path_str)
+            return True
         def on_leaf(leaf):
             print(f"    {leaf}")
         root.depth_first_search(on_node, on_leaf)
@@ -181,6 +247,7 @@ class Objectifier:
         paths = set()
         def on_node(node):
             paths.add(node.path_str)
+            return True
         root.depth_first_search(on_node)
         for _ in sorted(paths):
             print(_)
@@ -192,6 +259,7 @@ class Objectifier:
             root = self._root
         def on_node(node):
             SchemaNode.get_node(node)
+            return True
         def on_leaf(leaf):
             pass
         root.depth_first_search(on_node, on_leaf)
