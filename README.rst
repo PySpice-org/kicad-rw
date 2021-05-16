@@ -1,7 +1,69 @@
 .. -*- Mode: rst -*-
 
-.. include:: project-links.txt
-.. include:: abbreviation.txt
+.. -*- Mode: rst -*-
+
+.. |KiCadRWUrl| replace:: https://kicad-rw.fabrice-salvaire.fr
+
+.. |KiCadRWHomePage| replace:: KiCadRW Home Page
+.. _KiCadRWHomePage: https://kicad-rw.fabrice-salvaire.fr
+
+
+.. |KiCadRW@github| replace:: https://github.com/FabriceSalvaire/KiCadRW
+
+
+.. |KiCadRW@pypi| replace:: https://pypi.python.org/pypi/KiCadRW
+
+
+.. |KiCadRW@anaconda| replace:: https://anaconda.org/conda-forge/kicad-rw
+
+.. |KiCadRW@fs-anaconda| replace:: https://anaconda.org/fabricesalvaire/kicad-rw
+
+.. |Anaconda Version| image:: https://anaconda.org/conda-forge/kicad-rw/badges/version.svg
+   :target: https://anaconda.org/conda-forge/kicad-rw/badges/version.svg
+   :alt: Anaconda last version
+
+.. |Anaconda Downloads| image:: https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg
+   :target: https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg
+   :alt: Anaconda donwloads
+
+
+.. |Pypi Version| image:: https://img.shields.io/pypi/v/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW last version
+
+.. |Pypi License| image:: https://img.shields.io/pypi/l/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW license
+
+.. |Pypi Python Version| image:: https://img.shields.io/pypi/pyversions/KiCadRW.svg
+   :target: https://pypi.python.org/pypi/KiCadRW
+   :alt: KiCadRW python version
+
+
+.. |Tavis CI master| image:: https://travis-ci.com/FabriceSalvaire/KiCadRW.svg?branch=master
+   :target: https://travis-ci.com/FabriceSalvaire/KiCadRW
+   :alt: KiCadRW build status @travis-ci.org
+
+.. |KiCadRW Test Workflow| image:: https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/pyspice-test.yml/badge.svg?branch=devel
+   :target: https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/kicadrw-test.yml
+.. -*- Mode: rst -*-
+
+.. _IPython: http://ipython.org
+.. _Kicad: http://www.kicad-pcb.org
+.. _PyPI: https://pypi.python.org/pypi
+.. _Pyterate: https://github.com/FabriceSalvaire/Pyterate
+.. _Python: http://python.org
+.. _Sphinx: http://sphinx-doc.org
+.. _Tikz: http://www.texample.net/tikz
+
+.. |Circuit_macros| replace:: Circuit_macros
+.. |IPython| replace:: IPython
+.. |Kicad| replace:: Kicad
+.. |PyPI| replace:: PyPI
+.. |Pyterate| replace:: Pyterate
+.. |Python| replace:: Python
+.. |Sphinx| replace:: Sphinx
+.. |Tikz| replace:: Tikz
 
 =================================================================
  KiCad-RW : Python library to read/write KiCad Sexpr file format 
@@ -92,6 +154,16 @@ Authors: `Fabrice Salvaire <http://fabrice-salvaire.fr>`_ and `contributors <htt
 News
 ====
 
-.. include:: news.txt
+.. -*- Mode: rst -*-
+
+
+.. no title here
+
+V0 2020-05-xx
+-------------
+
+Started project...
+
+.. End
 
 .. End

@@ -11,10 +11,10 @@
 
 **keywords:** kicad, 6, python, schema
 
-  - **KiCadTools** is a Python module to read the KiCad version 6 schema  
-    file format (<span class="title-ref">.kicad\_sch</span> file extension) and to compute the
-    netlist which is not actually stored by KiCad. This module is standalone and independent of the
-    KiCad Python API, thus it don't require KiCad to work.
+**KiCadTools** is a Python module to read the KiCad version 6 schema file format
+(<span class="title-ref">.kicad\_sch</span> file extension) and to compute the netlist which is not
+actually stored by KiCad. This module is standalone and independent of the KiCad Python API, thus it
+don't require KiCad to work.
 
 **Note**: This proof of concept could become a standalone project and be further extended.
 
