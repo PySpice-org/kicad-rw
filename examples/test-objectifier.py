@@ -13,8 +13,8 @@ logger = setup_logging()
 
 schema_path = Path(
     'kicad-examples',
-    'capacitive-half-wave-rectification-pre-zener',
-    'capacitive-half-wave-rectification-pre-zener.kicad_sch'
+    # 'capacitive-half-wave-rectification-pre-zener', 'capacitive-half-wave-rectification-pre-zener.kicad_sch'
+    'open-syringe-pump', 'indus', 'opensyringepump_indus.kicad_sch'
 )
 
 objectifier = Objectifier(schema_path)
