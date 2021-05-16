@@ -1,0 +1,3 @@
+# Contributors
+
+In addition to https://github.com/FabriceSalvaire/kicad-rw/graphs/contributors, some contributors are lost due to git/github folks ...
