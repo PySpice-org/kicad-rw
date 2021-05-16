@@ -5,9 +5,9 @@
 
 .. no title here
 
-V0 2020-xx-xx
+V0 2020-05-xx
 -------------
 
-Started project
+Started project...
 
 .. End

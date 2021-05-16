@@ -602,44 +602,71 @@ a { text-decoration: none; }
 <!-- -*- Mode: rst -*- -->
 <!-- -*- Mode: rst -*- -->
 <!-- -*- Mode: rst -*- -->
-<p><a class="reference external" href="https://pypi.python.org/pypi/KiCadRW"><img alt="KiCadRW license" src="https://img.shields.io/pypi/l/KiCadRW.svg" /></a>
-<a class="reference external" href="https://pypi.python.org/pypi/KiCadRW"><img alt="KiCadRW python version" src="https://img.shields.io/pypi/pyversions/KiCadRW.svg" /></a></p>
-<p><a class="reference external" href="https://pypi.python.org/pypi/KiCadRW"><img alt="KiCadRW last version" src="https://img.shields.io/pypi/v/KiCadRW.svg" /></a></p>
-<p><a class="reference external" href="https://anaconda.org/conda-forge/kicad-rw/badges/version.svg"><img alt="Anaconda last version" src="https://anaconda.org/conda-forge/kicad-rw/badges/version.svg" /></a>
-<a class="reference external" href="https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg"><img alt="Anaconda donwloads" src="https://anaconda.org/conda-forge/kicad-rw/badges/downloads.svg" /></a></p>
-<p><a class="reference external" href="https://travis-ci.com/FabriceSalvaire/KiCadRW"><img alt="KiCadRW build status &#64;travis-ci.org" src="https://travis-ci.com/FabriceSalvaire/KiCadRW.svg?branch=master" /></a></p>
-<p><a class="reference external" href="https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/kicadrw-test.yml"><img alt="KiCadRW Test Workflow" src="https://github.com/FabriceSalvaire/kicad-rw/actions/workflows/pyspice-test.yml/badge.svg?branch=devel" /></a></p>
+<!-- |Pypi License|
+|Pypi Python Version|
+
+|Pypi Version|
+
+|Anaconda Version|
+|Anaconda Downloads|
+
+|KiCadRW Test Workflow| -->
 <p><strong>Quick Links</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/FabriceSalvaire/kicad-rw/tree/devel">Devel Branch</a></p></li>
 <li><p><a class="reference external" href="https://github.com/FabriceSalvaire/kicad-rw/tree/master">Production Branch</a></p></li>
 </ul>
-<!-- * `kicad-rw@conda-forge <https://github.com/conda-forge/kicad-rw-feedstock>`_ -->
-<!-- * `conda-forge/kicad-rw <https://anaconda.org/conda-forge/kicad-rw>`_ -->
+<!-- * `kicad-rw@conda-forge <https://github.com/conda-forge/kicad-rw-feedstock>`_
+* `conda-forge/kicad-rw <https://anaconda.org/conda-forge/kicad-rw>`_ -->
 <div class="section" id="overview">
 <h1>Overview</h1>
 <div class="section" id="what-is-kicadrw">
 <h2>What is KiCaDRW ?</h2>
+<p><strong>keywords:</strong> kicad, 6, python, schema</p>
+<dl class="simple">
+<dt><strong>KiCadTools</strong> is a Python module to read the KiCad version 6 schema</dt>
+<dd><p>file format (<cite>.kicad_sch</cite> file extension) and to compute the netlist
+which is not actually stored by KiCad.  This module is standalone and
+independent of the KiCad Python API, thus it don't require KiCad to
+work.</p>
+</dd>
+</dl>
+<p><strong>Note</strong>: This proof of concept could become a standalone project and
+be further extended.</p>
+<p>Examples of use cases:</p>
+<ul class="simple">
+<li><p>perform checks on circuit</p></li>
+<li><p>export a BOM</p></li>
+<li><p>generate a customised SPICE netlist, see <a class="reference external" href="https://github.com/FabriceSalvaire/PySpice">PySpice</a></p></li>
+<li><p>generate a <a class="reference external" href="https://ctan.org/pkg/pgf?lang=en">LaTeX/Tikz</a> graphic <strong>TO BE IMPLEMENTED</strong></p></li>
+<li><p>generate a draft for <a class="reference external" href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros">Circuit_macros</a>,
+a tool for drawing electric high quality circuits, see <cite>CircuitMacrosDumper</cite></p></li>
+<li><p>etc.</p></li>
+</ul>
 </div>
 <div class="section" id="where-is-the-documentation">
 <h2>Where is the Documentation ?</h2>
-<p>The documentation is available on the <a class="reference external" href="https://kicad-rw.fabrice-salvaire.fr">KiCadRW Home Page</a>.</p>
-<!-- Where to get help or talk about KiCaDRW ? -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<p><strong>TO BE COMPLETED</strong></p>
+<!-- The documentation is available on the |KiCaDRWHomePage|_. -->
+</div>
+<div class="section" id="where-to-get-help-or-talk-about-kicadrw">
+<h2>Where to get help or talk about KiCaDRW ?</h2>
+<p><strong>TO BE DONE</strong></p>
 </div>
 <div class="section" id="what-are-the-main-features">
 <h2>What are the main features ?</h2>
 </div>
 <div class="section" id="how-to-install-it">
 <h2>How to install it ?</h2>
+<p><strong>TO BE COMPLETED</strong></p>
 <!-- Look at the `installation <https://kicad-rw.fabrice-salvaire.fr/releases/latest/installation.html>`_ section in the documentation. -->
 </div>
 </div>
 <div class="section" id="pull-request-recommendation">
 <h1>Pull Request Recommendation</h1>
 <p>To make it easier to merge your pull request, you should divide your PR into smaller and easier-to-verify units.</p>
-<p>Please do not make a pull requests with a lot of modifications which are difficult to check.  <strong>If I merge
-pull requests blindly then there is a high risk this software will become a mess quickly for everybody.</strong></p>
+<p>Please do not make a pull requests with a lot of modifications which are difficult to check.
+.. If I merge pull requests blindly then there is a high risk this software will become a mess quickly for everybody.</p>
 </div>
 <div class="section" id="credits">
 <h1>Credits</h1>
@@ -649,9 +676,9 @@ pull requests blindly then there is a high risk this software will become a mess
 <h1>News</h1>
 <!-- -*- Mode: rst -*- -->
 <!-- no title here -->
-<div class="section" id="v0-2020-xx-xx">
-<h2>V0 2020-xx-xx</h2>
-<p>Started project</p>
+<div class="section" id="v0-2020-05-xx">
+<h2>V0 2020-05-xx</h2>
+<p>Started project...</p>
 <!-- End -->
 <!-- End -->
 </div>
