@@ -60,6 +60,7 @@ for _name in (
     'line',
 
     'name',
+    'no',
     'number',
 
     'on_board',

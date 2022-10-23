@@ -19,4 +19,4 @@
 ####################################################################################################
 
 from .patch import *
-from .symbols import *
+from .SexpSymbols import *
