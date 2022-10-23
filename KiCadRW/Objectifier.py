@@ -19,11 +19,14 @@
 ####################################################################################################
 
 __all__ = [
+    'Objectifier',
 ]
 
 ####################################################################################################
 
 import logging
+import re
+from typing import Any, Iterator
 
 import sexpdata
 from sexpdata import car, cdr, Symbol
@@ -43,28 +46,28 @@ class TreeMixin:
 
     ##############################################
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._childs = []
 
     ##############################################
 
-    def __bool__(self):
+    def __bool__(self) -> bool:
         return bool(self._childs)
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self._childs)
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Any]:
         return iter(self._childs)
 
     ##############################################
 
     @property
-    def childs(self):
+    def childs(self) -> list[Any]:
         return list(self._childs)
 
     @property
-    def first_child(self):
+    def first_child(self) -> Any:
         # if self._childs:
         return self._childs[0]
         # else:
@@ -72,12 +75,12 @@ class TreeMixin:
 
     ##############################################
 
-    def append_child(self, child):
+    def append_child(self, child: Any) -> None:
         self._childs.append(child)
 
     ##############################################
 
-    def depth_first_search(self, on_node=None, on_leaf=None, on_leave=None):
+    def depth_first_search(self, on_node=None, on_leaf=None, on_leave=None) -> None:
         go = True
         if on_node:
             go = on_node(self)
@@ -98,26 +101,26 @@ class Node(TreeMixin):
 
     ##############################################
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         super().__init__()
         self._path = path
 
     ##############################################
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._path[-1]
 
     @property
-    def path(self):
+    def path(self) -> str:
         return self._path
 
     @property
-    def path_str(self):
+    def path_str(self) -> str:
         return '/'.join(self._path)
 
     @property
-    def parent_str(self):
+    def parent_str(self) -> str:
         _ = self._path[:-1]
         if _:
             return '/'.join(_)
@@ -125,15 +128,15 @@ class Node(TreeMixin):
 
     ##############################################
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.path_str}: {self.childs}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.path_str}: {self.childs}"
 
     ##############################################
 
-    def xpath(self, path):
+    def xpath(self, path: str):
 
         DEBUG = False
 
@@ -189,8 +192,9 @@ class SchemaNode(TreeMixin):
     ##############################################
 
     @classmethod
-    def get_node(cls, node):
+    def get_node(cls, node: None) -> 'SchemaNode':
         if not cls.NODES:
+            # add root
             cls.NODES['/'] = SchemaNode('/')
         path_str = node.path_str
         if path_str in cls.NODES:
@@ -200,23 +204,36 @@ class SchemaNode(TreeMixin):
             cls.NODES[path_str] = schema_node
             parent = cls.NODES[node.parent_str]
             parent.append_child(schema_node)
+            return schema_node
 
     ##############################################
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         super().__init__()
         self._name = name
+        self._instances = []
 
     ##############################################
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     ##############################################
 
-    def __repr__(self):
-        return self._name
+    def __repr__(self) -> str:
+        number_of_instances = len(self._instances)
+        childs = set()
+        for node in self._instances:
+            child_str = '/'.join([type(_).__name__ for _ in node])
+            child_str = re.sub('Node\/(Node\/)+Node', 'Node/.../Node', child_str)
+            childs.add(child_str)
+        return f'{self._name} #{number_of_instances} {childs}'
+
+    ##############################################
+
+    def link_instance(self, instance: Node) -> None:
+        self._instances.append(instance)
 
 ####################################################################################################
 
@@ -226,23 +243,22 @@ class Objectifier:
 
     ##############################################
 
-    def __init__(self, path):
-
+    def __init__(self, path: str) -> None:
         self._logger.info(f"Load {path}")
         with open(path) as fh:
             sexpr = sexpdata.load(fh)
-
         self._root = self._walk_sexpr(sexpr)
 
     ##############################################
 
     @property
-    def root(self):
+    def root(self) -> Node:
         return self._root
 
     ##############################################
 
-    def dump(self, root=None):
+    def dump(self, root: Node = None) -> None:
+        """Sump sexp structure"""
         if root is None:
             root = self._root
         def on_node(node):
@@ -254,7 +270,8 @@ class Objectifier:
 
     ##############################################
 
-    def get_paths(self, root=None):
+    def get_paths(self, root: Node = None) -> None:
+        """Dump sexp path"""
         if root is None:
             root = self._root
         paths = set()
@@ -267,11 +284,12 @@ class Objectifier:
 
     ##############################################
 
-    def get_schema(self, root=None):
+    def get_schema(self, root: Node = None) -> None:
         if root is None:
             root = self._root
         def on_node(node):
-            SchemaNode.get_node(node)
+            schema_node = SchemaNode.get_node(node)
+            schema_node.link_instance(node)
             return True
         def on_leaf(leaf):
             pass

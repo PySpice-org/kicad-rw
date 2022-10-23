@@ -57,11 +57,11 @@ Why the hell, KiCad don't use an XML file format and don't store the netlist !
 ####################################################################################################
 
 import logging
-import os
 
 # from pprint import pprint
 
 from .Geometry import EuclidianMatrice, Position, PositionAngle, Vector
+
 from .Deprecated.Sexpression import Sexpression, car, cdr, car_value
 
 ####################################################################################################
