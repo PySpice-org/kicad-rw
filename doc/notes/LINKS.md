@@ -5,9 +5,29 @@
 * https://github.com/dvc94ch/pykicad — Library for working with KiCAD file formats **supports .kicad_pcb**
 * https://github.com/ckuhlmann/lt2circuitikz — Python (3.5) tool to convert LTspice .asc files into circuiTikz graphics **36 stars**
 
+## Other Projects
+
+* https://github.com/openscopeproject/InteractiveHtmlBom
+  Interactive HTML BOM generation plugin for KiCad
+  https://openscopeproject.org/InteractiveHtmlBomDemo
+
+* https://github.com/Robotips/uConfig
+  Datasheet pinout extractor from PDF and library Stylizer for Kicad.
+
+* https://github.com/yaqwsx/PcbDraw
+  Convert your KiCAD board into a nicely looking 2D drawing suitable for pinout diagrams
+
+* https://github.com/hildogjr/KiCost
+  Build cost spreadsheet for a KiCad project.
+
 ## Comprehensive List of KiCad Tools
 
 * https://github.com/xesscorp/kicad-3rd-party-tools — Tools made by others to augment the KiCad PCB EDA suite.
+
+## Sexp Tools
+
+* https://github.com/jd-boyd/sexpdata — S-expression parser for Python
+  https://sexpdata.readthedocs.io/en/latest
 
 ## KiCad EDA Links
 
