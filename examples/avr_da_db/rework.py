@@ -188,7 +188,7 @@ def bank_pins(pins):
     banks = PinBanks(
         [pin for pin in pins if 'VDD' in pin.name],
         [pin for pin in pins if 'GND' in pin.name],
-        [pin for pin in pins if pin.name in ('UPDI')],
+        [pin for pin in pins if pin.name in ('UPDI',)],
         [
             p
             for p in (
@@ -360,7 +360,7 @@ def make_base_device(family, device, package):
         return pin.name
 
     def directionality(pin):
-        if pin.name in ('UPDI'):
+        if pin.name in ('UPDI',):
             return 'input'
         return 'bidirectional'
 
