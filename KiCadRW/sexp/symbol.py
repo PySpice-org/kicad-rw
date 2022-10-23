@@ -62,8 +62,8 @@ from .SexpSymbols import (
     SYMBOL,
     TYPE,
     VERSION,
-    YES,
     WIDTH,
+    YES,
 )
 # pylint: enable=no-name-in-module
 
