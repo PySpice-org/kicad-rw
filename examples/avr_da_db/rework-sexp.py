@@ -167,7 +167,7 @@ def load_pins(family, flash_size, pin_count, package):
         return None
 
     filename_pattern = f'avr{flash_size}{family.lower()}-io-mux.csv'
-    path = Path(__file__).parent.joinpath(filename_pattern)
+    path = Path(__file__).parent.joinpath('data', filename_pattern)
     with open(path, 'rt') as fh:
         heading_cells = fh.readline().rstrip().split(',')
         for i, col_name in enumerate(heading_cells):

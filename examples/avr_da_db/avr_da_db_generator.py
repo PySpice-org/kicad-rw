@@ -141,7 +141,7 @@ def load_pins(family, flash_size, pin_count, package):
         return None
 
     path = osp.join(
-        osp.dirname(__file__), f"avr{flash_size}{family.lower()}-io-mux.csv"
+        osp.dirname(__file__), "data", f"avr{flash_size}{family.lower()}-io-mux.csv"
     )
     with open(path, "rt") as f:
         heading_cells = f.readline().rstrip().split(",")
