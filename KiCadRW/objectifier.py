@@ -304,7 +304,11 @@ class Objectifier:
         elif isinstance(sexpr, Symbol):
             return sexpr   # ??? .value()
         elif isinstance(sexpr, list):
-            _car = car(sexpr).value()
+            _car = car(sexpr)
+            if isinstance(_car, Symbol):
+                _car = str(_car)
+            else:
+                _car.value()
             _cdr = cdr(sexpr)
             path = path.copy()
             path.append(_car)

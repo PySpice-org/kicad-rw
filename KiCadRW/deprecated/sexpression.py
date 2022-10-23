@@ -28,12 +28,18 @@ __all__ = [
 ####################################################################################################
 
 import sexpdata
-from sexpdata import car, cdr
+from sexpdata import car, cdr, Symbol
 
 ####################################################################################################
 
+def get_value(_):
+    if isinstance(_, Symbol):
+        return str(_)
+    else:
+        return _.value()
+
 def car_value(_):
-    return car(_).value()
+    return get_value(car(_))
 
 ####################################################################################################
 
@@ -48,7 +54,7 @@ class Sexpression:
             d = {'_': []}
             for item in cdr(sexpr):
                 if isinstance(item, sexpdata.Symbol):
-                    d['_'].append(item.value())
+                    d['_'].append(get_value(item))
                 elif isinstance(item, list):
                     key, value = cls.to_dict(item)
                     # some keys can appear more than one time...
@@ -65,7 +71,7 @@ class Sexpression:
             else:
                 # Fixme: could use d.get('_', []) ???
                 del d['_']
-            return car(sexpr).value(), d
+            return car_value(sexpr), d
         else:
             return sexpr
 
