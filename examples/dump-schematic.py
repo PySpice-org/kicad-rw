@@ -3,7 +3,7 @@
 
 from pathlib import Path
 
-from KiCadRW.schema import KiCadSchema
+from KiCadRW.sexp.schema import KiCadSchema
 
 ####################################################################################################
 
