@@ -86,3 +86,8 @@ kicad-links/
 log.txt
 setenv.sh
 tasks/test.py
+
+fp-info-cache
+*.bak
+
+nogit
