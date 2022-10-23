@@ -26,11 +26,10 @@ import math
 import re
 import string
 
-# from pprint import pprint
-
 ####################################################################################################
 
-from KiCadRW.sexp.symbol import LibrarySymbol, JustifyStyle
+from KiCadRW.sexp import symbol
+from KiCadRW.sexp.symbol import SymbolLibrary, JustifyStyle, Part, ExtendedPart, Direction
 
 ####################################################################################################
 
@@ -70,7 +69,7 @@ pdfs = {
     (128, 'DB'): 'AVR128DB28-32-48-64-DataSheet-DS40002247A.pdf',
 }
 
-families = sorted(set([_.family for _ in devices]))
+families = sorted({_.family for _ in devices})
 family_descriptions = {'DA': 'Touch Sensing', 'DB': 'Op Amps and Multi-Voltage I/O'}
 
 flash_sizes = sorted({_.flash_size for _ in devices})
@@ -135,16 +134,6 @@ footprints = {
 }
 
 ####################################################################################################
-
-grid = 2.54
-width_padding = 6 * grid
-height_padding = 2 * grid
-pin_length = 1 * grid
-font_width = 0.5 * grid
-font_height = 0.5 * grid
-text_offset = 0.5 * grid
-
-####################################################################################################
 #
 # Read pins from CSV
 #
@@ -153,8 +142,8 @@ Pin = namedtuple('Pin', 'number name special')
 
 re_footnote = re.compile(r'\([0-9]+\)')
 
-def load_pins(family, flash_size, pin_count, package):
-    def parse_line(line):
+def load_pins(family: str, flash_size: int, pin_count: int, package: str) -> list[Pin]:
+    def parse_line(line: str) -> Pin | None:
         cells = line.split(',')
         pin_num = cells[package_col]
         special = cells[special_col]
@@ -168,7 +157,7 @@ def load_pins(family, flash_size, pin_count, package):
 
     filename_pattern = f'avr{flash_size}{family.lower()}-io-mux.csv'
     path = Path(__file__).parent.joinpath(filename_pattern)
-    with open(path, 'rt') as fh:
+    with open(path, 'rt', encoding='utf8') as fh:
         heading_cells = fh.readline().rstrip().split(',')
         for i, col_name in enumerate(heading_cells):
             if f'{package}{pin_count}' in col_name.split('/'):
@@ -182,8 +171,8 @@ def load_pins(family, flash_size, pin_count, package):
 PinBanks = namedtuple('PinBanks', 'power ground misc ports')
 Port = namedtuple('Port', 'letter pins')
 
-def bank_pins(pins):
-    def filter_port_pins(port):
+def bank_pins(pins: list[Pin]) -> PinBanks:
+    def filter_port_pins(port: str) -> list[Pin]:
         port_name = 'P' + port
         return [pin for pin in pins if pin.name.startswith(port_name)]
 
@@ -216,17 +205,30 @@ def bank_pins(pins):
 
 ####################################################################################################
 
-def get_part_name(family, device, package):
+def get_part_name(family: str, device: Device, package: str) -> str:
     return f'AVR{device.flash_size}{family}{device.pin_count}x-x{package}'
 
 ####################################################################################################
 
-def has_exposed_pad(pin_count, package):
+def has_exposed_pad(pin_count: int, package: str) -> bool:
     return '-1EP' in footprints[Package(package, pin_count)].footprint
 
 ####################################################################################################
 
-def make_properties(part, family, device, package, width, height, value_offset):
+grid = 2.54
+width_padding = 6 * grid
+height_padding = 2 * grid
+pin_length = 1 * grid
+font_width = 0.5 * grid
+font_height = 0.5 * grid
+text_offset = 0.5 * grid
+
+####################################################################################################
+
+def make_properties(
+        part: Part, family: str, device: Device, package: str,
+        width: float, height: float, value_offset: float,
+) -> None:
     package_style = package_styles[package]
     footprint = footprints[Package(package, device.pin_count)]
     package_name = f'{package_style}-{device.pin_count}'
@@ -282,7 +284,7 @@ def make_properties(part, family, device, package, width, height, value_offset):
 
 BaseInfo = namedtuple('BaseInfo', 'name width height value_offset')
 
-def make_base_device(library, family, device, package):
+def make_base_device(library: SymbolLibrary, family: str, device: Device, package: str) -> BaseInfo:
     # print()
     # print('make_base_device', family, device, package)
     part_name = get_part_name(family, device, package)
@@ -300,20 +302,20 @@ def make_base_device(library, family, device, package):
     #     print(f'- {port.letter}')
     #     for pin in port.pins:
     #         print(' ', pin)
-        
+
     left_banks = []
     right_banks = []
     side_banks = deque([port.pins for port in banks.ports] + [banks.misc])
 
-    def side_width(bank):
+    # Fixme: side_width return for ground !
+    def side_width(bank: list[Pin]) -> int:
         return len(banks.ground) - 1
 
-    def side_height(banks):
+    def side_height(banks: list[Pin]) -> int:
         if len(banks) == 0:
             return 0
         return sum((len(bank) + 1 for bank in banks), 0) - 2
 
-    # Fixme: side_width return for ground !
     top_side_width = side_width(banks.power)
     bottom_side_width = side_width(banks.ground)
     inner_width = math.ceil(max(top_side_width, bottom_side_width) / 2) * 2 * grid
@@ -346,7 +348,7 @@ def make_base_device(library, family, device, package):
     part.add_rectangle(start=(left, top), end=(right, bottom))
 
     # Pins
-    def make_pin_label(pin):
+    def make_pin_label(pin: Pin) -> str:
         if pin.special == 'RESET':
             return '~{RESET}/' + pin.name
         elif pin.special is not None and pin.special not in (
@@ -362,12 +364,17 @@ def make_base_device(library, family, device, package):
             return f'{special}/{pin.name}'
         return pin.name
 
-    def directionality(pin):
+    def directionality(pin: Pin) -> str:
         if pin.name in ('UPDI',):
             return 'input'
         return 'bidirectional'
 
-    def render_pin(part, type_, name, number, x, y, angle, hide=False):
+    def render_pin(
+            part: Part,
+            type_: str, name: str, number: str,
+            x: float, y: float, angle: int,
+            hide: bool = False,
+    ) -> symbol.Pin:
         part.add_pin(
             name=name,
             number=number,
@@ -379,7 +386,7 @@ def make_base_device(library, family, device, package):
             hide=hide,
         )
 
-    def render_side_banks(banks, x, angle):
+    def render_side_banks(banks: list[Pin], x: float, angle: int) -> None:
         y = inner_height / 2
         for bank in banks:
             for pin in bank:
@@ -387,8 +394,8 @@ def make_base_device(library, family, device, package):
                 y -= grid
             y -= grid
 
-    def render_power_bank(pins, y, angle):
-        def render_power_pin(name, number, stacked=False):
+    def render_power_bank(pins: list[Pin], y: float, angle: int) -> None:
+        def render_power_pin(name: str, number: str, stacked: bool = False) -> None:
             render_pin(
                 part,
                 'passive' if stacked else 'power_in',
@@ -406,22 +413,23 @@ def make_base_device(library, family, device, package):
                 render_power_pin(pin_name, pin_number, stacked=True)
             x += grid
 
-    render_side_banks(right_banks, right + pin_length, 180)
-    render_side_banks(left_banks, left - pin_length, 0)
-    render_power_bank(banks.power, top + pin_length, 270)
+    render_side_banks(right_banks, right + pin_length, Direction.LEFT)
+    render_side_banks(left_banks, left - pin_length, Direction.RIGHT)
+    render_power_bank(banks.power, top + pin_length, Direction.BOTTOM)
 
     ground_pins = banks.ground
     if has_exposed_pad(device.pin_count, package):
         ground_pins.append(Pin(device.pin_count + 1, 'GND', ''))
-    render_power_bank(ground_pins, bottom - pin_length, 90)
+    render_power_bank(ground_pins, bottom - pin_length, Direction.TOP)
 
-    base_info = BaseInfo(part_name, outline_width, outline_height, value_offset)
-
-    return base_info
+    return BaseInfo(part_name, outline_width, outline_height, value_offset)
 
 ####################################################################################################
 
-def make_alias_device(library, family, device, package, base_info):
+def make_alias_device(
+        library: SymbolLibrary,
+        family: str, device: Device, package: str, base_info: str,
+) -> ExtendedPart:
     part_name = get_part_name(family, device, package)
     part = library.add_extended_part(part_name, base_info.name)
     make_properties(
@@ -437,8 +445,8 @@ def make_alias_device(library, family, device, package, base_info):
 
 ####################################################################################################
 
-def main():
-    library = LibrarySymbol(version='20211014')
+def main() -> SymbolLibrary:
+    library = SymbolLibrary(version='20211014')
 
     for family in families:
         for pin_count in pin_counts:
@@ -493,5 +501,5 @@ def main():
 if __name__ == '__main__':
     library = main()
     sexp_str = library.dumps()
-    with open('out', 'w') as fh:
+    with open('out', 'w', encoding='utf8') as fh:
         fh.write(sexp_str)
