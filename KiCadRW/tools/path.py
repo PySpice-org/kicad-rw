@@ -18,6 +18,8 @@
 #
 ####################################################################################################
 
+__all__ = ['find']
+
 ####################################################################################################
 
 from pathlib import Path
@@ -25,7 +27,7 @@ import os
 
 ####################################################################################################
 
-def find(file_name, directories):
+def find(file_name: str, directories: list[str]) -> Path:
     for directory in directories:
         for directory_path, sub_directories, file_names in os.walk(directory):
             if file_name in file_names:

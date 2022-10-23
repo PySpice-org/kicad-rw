@@ -3,8 +3,8 @@
 from pathlib import Path
 from pprint import pprint
 
-from KiCadRW.Objectifier import Objectifier, SchemaNode
-from KiCadRW.Logging import setup_logging
+from KiCadRW.objectifier import Objectifier, SchemaNode
+from KiCadRW.log import setup_logging
 
 ####################################################################################################
 

@@ -2,8 +2,8 @@
 
 from pathlib import Path
 
-from KiCadRW.Schema import KiCadSchema
-from KiCadRW.Drawings.CircuitMacros import CircuitMacrosDumper
+from KiCadRW.schema import KiCadSchema
+from KiCadRW.drawings.CircuitMacros import CircuitMacrosDumper
 
 ####################################################################################################
 

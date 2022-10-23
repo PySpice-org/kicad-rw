@@ -24,23 +24,25 @@
 
 ####################################################################################################
 
-import yaml
 import logging
 import logging.config
 import os
 import sys
+from typing import Optional
+
+import yaml
 
 ####################################################################################################
 
-import KiCadRW.Config.ConfigInstall as ConfigInstall
+from KiCadRW.config import ConfigInstall
 
 ####################################################################################################
 
 def setup_logging(
-        application_name='KiCad-RW',
-        config_file=ConfigInstall.Logging.default_config_file,
-        logging_level=None,
-):
+        application_name: str = 'KiCad-RW',
+        config_file: str = ConfigInstall.Logging.default_config_file,
+        logging_level: Optional[str] = None,
+) -> logging.Logger:
 
     """Setup the logging.
 

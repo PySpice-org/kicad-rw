@@ -60,9 +60,9 @@ import logging
 
 # from pprint import pprint
 
-from .Geometry import EuclidianMatrice, Position, PositionAngle, Vector
+from .geometry import EuclidianMatrice, Position, PositionAngle, Vector
 
-from .Deprecated.Sexpression import Sexpression, car, cdr, car_value
+from .deprecated.sexpression import Sexpression, cdr, car_value
 
 ####################################################################################################
 

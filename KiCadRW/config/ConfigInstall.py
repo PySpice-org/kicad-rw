@@ -2,12 +2,11 @@
 
 from pathlib import Path
 
-import os
 import sys
 
 ####################################################################################################
 
-import KiCadRW.Tools.Path as PathTools
+import KiCadRW.tools.path as PathTools
 
 ####################################################################################################
 
@@ -15,8 +14,7 @@ class OsFactory:
 
     ##############################################
 
-    def __init__(self):
-
+    def __init__(self) -> None:
         if sys.platform.startswith('linux'):
             self._name = 'linux'
         elif sys.platform.startswith('win'):
@@ -27,19 +25,19 @@ class OsFactory:
     ##############################################
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @property
-    def on_linux(self):
+    def on_linux(self) -> bool:
         return self._name == 'linux'
 
     @property
-    def on_windows(self):
+    def on_windows(self) -> bool:
         return self._name == 'windows'
 
     @property
-    def on_osx(self):
+    def on_osx(self) -> bool:
         return self._name == 'osx'
 
 OS = OsFactory()
@@ -63,5 +61,5 @@ class Logging:
     ##############################################
 
     @staticmethod
-    def find(config_file):
+    def find(config_file) -> Path:
         return PathTools.find(config_file, Logging.directories)
