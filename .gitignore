@@ -13,6 +13,8 @@ parsetab.py
 
 *-backups/
 
+__TRASH__/
+
 ####################################################################################################
 #
 # Secrets
@@ -62,3 +64,25 @@ doc/pelican/theme/yarn.lock
 doc/sphinx/build/
 doc/sphinx/source/api/
 doc/sphinx/source/examples/
+
+####################################################################################################
+
+.github/workflows/
+.travis.yml
+README-COPY.txt
+capacitive-half-wave-rectification-pre-zener.kicad_sch
+doc/pelican/
+doc/sphinx/source/-donate.rst-
+doc/sphinx/source/-how-to-refer.rst-
+doc/sphinx/source/-installation.rst-
+doc/sphinx/source/_static/
+doc/sphinx/source/development.rst
+doc/sphinx/source/index.rst
+doc/sphinx/source/on-the-web.rst
+doc/sphinx/source/overview.rst
+kicad-examples/capacitive-half-wave-rectification-pre-zener/capacitive-half-wave-rectification-pre-zener.orig.kicad_sch
+kicad-examples/capacitive-half-wave-rectification-pre-zener/capacitive-half-wave-rectification-pre-zener.sexpdata.kicad_sch
+kicad-links/
+log.txt
+setenv.sh
+tasks/test.py
