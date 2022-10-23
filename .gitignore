@@ -91,3 +91,8 @@ fp-info-cache
 *.bak
 
 nogit
+
+out
+
+examples/avr_da_db/MCU_Microchip_AVR_Dx.kicad_sym-rewrite
+
