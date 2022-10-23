@@ -4,7 +4,8 @@
 * CSV files contains I/O multiplexing from datasheets
 * `test-sexp.py` is a script to read and rewrite the library using the [sexpdata](https://github.com/jd-boyd/sexpdata) Python module (monkey patched to match KiCad indentation)
 * `rework.py` is a reworked version of `avr_da_db_generator.py`
-* `rework-sexp.py` script uses the **sexpdata** module to serialise the library
+* `rework-sexp.py` script uses the **sexpdata** low level module to serialise the library
+* `rework-library-module.py` script uses the **KiCadRW.sexp.symbol** high level module to serialise the library
 
 ## References
 
